@@ -1,0 +1,13 @@
+@if (cardTitle || cardSubTitle) {
+  <div class="dt-card__heading">
+    @if (cardTitle) {
+      <h3 class="dt-card__title" [innerHTML]="cardTitle"></h3>
+    }
+    @if (cardSubTitle) {
+      <h5 class="dt-card__subtitle" [innerHTML]="cardSubTitle"></h5>
+    }
+  </div>
+}
+
+<ng-content></ng-content>
+<!-- /card header -->

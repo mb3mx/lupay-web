@@ -1,0 +1,46 @@
+<card-body class="p-xl-8 py-sm-8 py-6 px-4">
+  @if (badge) {
+    <span class="badge badge-top-right" [ngClass]="badge.color">{{badge.name}}</span>
+  }
+
+  <!-- Media -->
+  <div class="media">
+
+    @if (icon) {
+      <gx-icon
+        size="5x"
+        class="mr-xl-5 me-3 align-self-center"
+        [name]="icon.name"
+      [ngClass]="icon.color"></gx-icon>
+    }
+
+    <!-- Media Body -->
+    @if (items.length > 0) {
+      <div class="media-body">
+        @if (items.length == 1) {
+          <p class="mb-1 h1">{{items[0].value}}</p>
+          <span class="d-block text-light-gray">{{items[0].text}}</span>
+        }
+        @if (items.length > 1) {
+          <ul class="invoice-list">
+            @for (item of items; track item) {
+              <li class="invoice-list__item">
+                <span class="invoice-list__number">{{item.value}}</span>
+                @if (item.tooltip) {
+                  <span class="dot-shape" [ngClass]="item.tooltip.color"></span>
+                }
+                <span class="invoice-list__label">{{item.text}}</span>
+                @if (item.tooltip) {
+                  <span class="custom-tooltip" [ngClass]="item.tooltip.color">{{item.tooltip.value}}</span>
+                }
+              </li>
+            }
+          </ul>
+        }
+      </div>
+    }
+    <!-- /media body -->
+
+  </div>
+  <!-- /media -->
+</card-body>

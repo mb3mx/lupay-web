@@ -1,0 +1,42 @@
+<!-- Chart Header -->
+<div class="dt-chart__header"
+  [ngClass]="{'my-n3': !isVertical, 'mb-1 vertical-view': isVertical}">
+
+  <div class="style-default" [ngClass]="styleClasses">
+    @if (data.heading) {
+      <h2 [ngClass]="data.heading.color">{{data.heading.value}}</h2>
+    }
+
+    @if (data.trending.value && data.trending.icon) {
+      <div
+        class="trending-section"
+        [ngClass]="data.trending.color">
+        @if (data.trending.value) {
+          <span class="value">{{data.trending.value}}</span>
+        }
+        @if (data.trending.icon) {
+          <gx-icon [name]="data.trending.icon" [size]="iconSize"></gx-icon>
+        }
+      </div>
+    }
+
+    @if (data.tagLine) {
+      <p [ngClass]="data.tagLine.color">{{data.tagLine.text}}</p>
+    }
+  </div>
+</div>
+<!-- /chart header -->
+
+<!-- Action Tools -->
+@if (data.crypto) {
+  <div class="action-tools">
+    <gx-icon [name]="data.crypto.icon" size="3x" [ngClass]="data.crypto.classes"></gx-icon>
+  </div>
+}
+<!-- /action tools -->
+
+@if (chart) {
+  <div class="dt-chart__body">
+    <ng-content select="gx-chart"></ng-content>
+  </div>
+}

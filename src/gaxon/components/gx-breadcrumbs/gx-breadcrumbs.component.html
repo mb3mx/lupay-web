@@ -1,0 +1,33 @@
+@if (displayAs == 'list') {
+  <ol class="breadcrumb">
+    @for (item of data; track item) {
+      <li class="breadcrumb-item" [ngClass]="{active:item.active}">
+        @if (!item.active && item.route) {
+          <a [routerLink]="[item.route]">{{item.label}}</a>
+        }
+        @if (!item.active && !item.route) {
+          <a href="javascript:void(0)">{{item.label}}</a>
+        }
+        @if (item.active) {
+          {{item.label}}
+        }
+      </li>
+    }
+  </ol>
+}
+
+@if (displayAs != 'list') {
+  <nav class="breadcrumb">
+    @for (item of data; track item) {
+      @if (!item.active && item.route) {
+        <a [routerLink]="[item.route]" class="breadcrumb-item">{{item.label}}</a>
+      }
+      @if (!item.active && !item.route) {
+        <a href="javascript:void(0)" class="breadcrumb-item">{{item.label}}</a>
+      }
+      @if (item.active) {
+        <span class="active breadcrumb-item">{{item.label}}</span>
+      }
+    }
+  </nav>
+}

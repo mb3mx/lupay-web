@@ -1,0 +1,15 @@
+@if (mediaImage.url && mediaImage.order === 'top') {
+  <img [ngClass]="mediaImage.classlist" [src]="mediaImage.url"
+    alt="{{mediaImage.alt || 'Media Image'}}">
+}
+<div class="media-body" [ngClass]="bodyClass">
+  @if (heading) {
+    <h5 [ngClass]="headingClass" [innerHTML]="heading"></h5>
+  }
+  <ng-content></ng-content>
+</div>
+@if (mediaImage.url && mediaImage.order !== 'top') {
+  <img [ngClass]="mediaImage.classlist" [src]="mediaImage.url"
+    alt="{{mediaImage.alt || 'Media Image'}}">
+}
+<ng-content select=".media-actions"></ng-content>

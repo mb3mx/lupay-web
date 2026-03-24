@@ -1,0 +1,24 @@
+<card-body [ngClass]="bodyClasses">
+
+  <ng-content></ng-content>
+
+  <!-- Icon -->
+  @if (data.icon) {
+    <gx-icon [name]="data.icon" size="6x" class="mb-5"></gx-icon>
+  }
+  <!-- /icon -->
+
+  @if (data.title) {
+    <h3 [ngClass]="titleColor" [innerHTML]="data.title"></h3>
+  }
+
+  @if (data.content) {
+    <p class="card-text" [innerHTML]="data.content"></p>
+  }
+
+  @if (data.action) {
+    <a
+      [ngClass]="data.action.class"
+    [routerLink]="data.action.route">{{data.action.label}}</a>
+  }
+</card-body>

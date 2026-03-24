@@ -1,0 +1,14 @@
+@if (user.thumb) {
+  <img class="img-fluid" [src]="user.thumb"
+    [ngClass]="avatarClass"
+    alt="{{user.name}}">
+}
+
+@if (!user.thumb && charLength == 1) {
+  {{user.name | oneLetter}}
+}
+@if (!user.thumb && charLength != 1) {
+  @for (word of user.name.split(' '); track word) {
+    {{word | oneLetter}}
+  }
+}

@@ -1,0 +1,20 @@
+<div class="dt-side-nav__item dt-side-nav__header">
+  @if (item.translate) {
+    <span class="dt-side-nav__text" [translate]="item.translate"></span>
+  }
+  @if (!item.translate) {
+    <span class="dt-side-nav__text">{{item.title}}</span>
+  }
+</div>
+
+@for (item of item.children; track item) {
+  @if (item.type=='group') {
+    <app-nav-vertical-group [item]="item"></app-nav-vertical-group>
+  }
+  @if (item.type=='collapse') {
+    <app-nav-vertical-collapse [item]="item"></app-nav-vertical-collapse>
+  }
+  @if (item.type=='item') {
+    <app-nav-vertical-item [item]="item"></app-nav-vertical-item>
+  }
+}

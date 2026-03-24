@@ -1,0 +1,31 @@
+<!-- Vertical Navigation Layout -->
+@if (layout === 'vertical') {
+  @for (item of navigation; track item) {
+    @if (item.type=='group') {
+      <app-nav-vertical-group [item]="item"></app-nav-vertical-group>
+    }
+    @if (item.type=='collapse') {
+      <app-nav-vertical-collapse [item]="item"></app-nav-vertical-collapse>
+    }
+    @if (item.type=='item') {
+      <app-nav-vertical-item [item]="item"></app-nav-vertical-item>
+    }
+  }
+}
+<!-- / Vertical Navigation Layout -->
+
+<!-- Horizontal Navigation Layout -->
+@if (layout === 'horizontal') {
+  @for (item of headerMenu; track item) {
+    @if (item.type=='mega') {
+      <app-nav-horizontal-mega [item]="item"></app-nav-horizontal-mega>
+    }
+    @if (item.type=='collapse') {
+      <app-nav-horizontal-collapse [item]="item"></app-nav-horizontal-collapse>
+    }
+    @if (item.type=='item') {
+      <app-nav-horizontal-item [item]="item"></app-nav-horizontal-item>
+    }
+  }
+}
+<!-- / Horizontal Navigation Layout -->
